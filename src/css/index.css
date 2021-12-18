@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'Arvo';
+    src: url(../assets/Arvo-BoldItalic.ttf);
+}
+
+*,*::before,*::after{
+    font-family: 'Arvo';
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --grey:#6B6E70;
+    --black:#222629;
+    --green-bright:#86C232;
+    --green-dull:#99D34F;
+    --white:#ffffff;
+}
+
+nav{
+    background-color: var(--grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    position: sticky;
+}
+
+.ham-button{
+    height: 60px;
+}
+
+.user-icon{
+    height: 40px;
+}
+
+body{
+    background-color: var(--black);
+}
+
+.heading-text-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.heading-text-cont h1{
+    font-size: 4rem;
+    color: var(--green-bright);
+}
+
+.heading-text-cont h3{
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    color: var(--white);
+}
+
+.search-bar{
+    background-color: transparent;
+    box-shadow: 0 0 10px 2px var(--green-dull);
+    border-radius: 3rem;
+    display: flex;
+    width: 600px;
+    margin: 1px auto;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.search-bar input{
+    outline: none;
+    background-color: transparent;
+    margin: 0;
+    border: none;
+    width: 100%;
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.search-bar img{
+    height: 50px;
+}
+
+.search-bar input::placeholder{
+    color: var(--white);
+}
