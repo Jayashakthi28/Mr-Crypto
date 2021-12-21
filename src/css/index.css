@@ -10,6 +10,11 @@
     box-sizing: border-box;
 }
 
+img{
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 :root{
     --grey:#6B6E70;
     --black:#222629;
@@ -85,4 +90,57 @@ body{
 
 .search-bar input::placeholder{
     color: var(--white);
+}
+
+/**************Main card Section********************/
+.major_coins_card_cont{
+    display: flex;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    justify-content: space-evenly;
+}
+
+.major_coin_card{
+    border-radius: 1rem;
+    padding: 1.5rem 0;
+    width: 262px;
+    box-shadow: 0 0 10px 2px var(--green-dull);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+}
+
+.major_coin_card img{
+    border-radius: 50%;
+}
+
+.major_coin_card h1{
+    color: var(--white);
+    margin-top: 0.5rem;
+}
+
+.major_coin_card .major-price{
+    color: var(--green-bright);
+    font-size: 1.5rem;
+}
+
+.major-price::before{
+    content: "$ ";
+    color: var(--green-bright);
+}
+
+.coin-switch-tab{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem 0rem;
+    margin: 2rem 1rem;
+    box-shadow: 0 0 10px 2px var(--green-dull);
+    border-radius: 5rem;
+}
+
+.coin-switch-tab .tab_btn{
+    color: var(--white);
+    font-size: 1.2rem;
+    cursor: pointer;
 }
