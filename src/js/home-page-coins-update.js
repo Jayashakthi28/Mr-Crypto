@@ -11,7 +11,6 @@ async function majorCardpriceUpdate(){
         num=num.toFixed(2);
         elements[i].textContent=num;
     }
-    console.clear();
 }
 
 async function topCoinsDetails(){
