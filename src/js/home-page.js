@@ -1,3 +1,6 @@
 import '../css/index.css'
-const data=require('../assets/data.json');
+import "firebase/app"
+import "./firebase-init"
+require('../assets/data.json');
+import './signin-module';
 import './home-page-coins-update'
