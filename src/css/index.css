@@ -18,9 +18,12 @@ img{
     --grey:#6B6E70;
     --black:#222629;
     --green-bright:#86C232;
+    --red:#fe3f38;
     --green-dull:#99D34F;
     --white:#ffffff;
 }
+
+
 
 nav{
     background-color: var(--grey);
@@ -143,4 +146,66 @@ body{
     color: var(--white);
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+/**************************************/
+.top-coins-cont{
+    padding: 1rem;
+    box-shadow: 0 0 5px 1px var(--green-dull);
+    margin: 2rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.top-coin{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 15px;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--white);
+    align-items: center;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 0.5fr;
+    text-align: left;
+}
+
+.top-coin .coin-rank::after{
+    content: ".";
+}
+
+
+.fav-linker img{
+    width: 30px;
+}
+
+.coin-logo-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coin-logo-cont img{
+    width: 40px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.top-coin .coin-rank{
+    text-align: right;
+}
+
+.coin-price-change::after{
+    content: "%";
+}
+
+.top-coin .coin-price::before{
+    content: "$ ";
+}
+
+.red-txt{
+    color: var(--red);
+}
+
+.green-txt{
+    color: var(--green-bright);
 }
