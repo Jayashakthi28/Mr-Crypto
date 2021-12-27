@@ -5,6 +5,6 @@ module.exports=merge(common,{
     mode:'development',
     output:{
         filename:"[name].js",
-        path:path.resolve(__dirname,"dist/js")
+        path:path.resolve(__dirname,"dist")
     }
 });
