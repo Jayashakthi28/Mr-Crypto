@@ -21,5 +21,4 @@ async function topCoinsDetails(){
 }
 
 majorCardpriceUpdate();
-
 export{majorCardpriceUpdate,topCoinsDetails}
