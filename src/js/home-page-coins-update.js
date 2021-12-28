@@ -13,12 +13,7 @@ async function majorCardpriceUpdate(){
     }
 }
 
-async function topCoinsDetails(){
-    let url=`https://data.messari.io/api/v2/assets?fields=id,slug,symbol,metrics/market_data/price_usd,metrics/marketcap/rank,metrics/market_data/percent_change_usd_last_24_hours&limit=100`;
-    let data=await fetch(url);
-    data=await data.json();
-    return data;
-}
+
 
 majorCardpriceUpdate();
-export{majorCardpriceUpdate,topCoinsDetails}
+export{majorCardpriceUpdate}
