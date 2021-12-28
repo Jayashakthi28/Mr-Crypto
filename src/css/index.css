@@ -209,3 +209,7 @@ body{
 .green-txt{
     color: var(--green-bright);
 }
+
+.none{
+    display: none;
+}
