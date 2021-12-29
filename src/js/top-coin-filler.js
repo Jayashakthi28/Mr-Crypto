@@ -5,9 +5,15 @@ import { user } from "./module/_user";
 export async function coinFiller() {
   let jsonData = await apiData.getTopcoinData();
   document.querySelector(".news-cont").classList.add("none");
+  document.querySelector('.fav-coins-cont').classList.add("none");
   document.querySelector(".top-coins-cont").innerHTML = "";
   jsonData = await jsonData["data"];
-  await jsonData.forEach((data) => {
+  coinsRenderer(jsonData);
+  document.querySelector(".top-coins-cont").classList.remove("none");
+}
+
+function coinsRenderer(jsonData){
+  jsonData.forEach((data) => {
     let percent =
       +data["metrics"]["market_data"]["percent_change_usd_last_24_hours"];
     let price = +data["metrics"]["market_data"]["price_usd"];
@@ -16,6 +22,8 @@ export async function coinFiller() {
     let upperSlug =
       data["slug"].charAt(0).toUpperCase() + data["slug"].slice(1);
     let topCoin = document.createElement("div");
+    let favCoin = document.createElement("div");
+    favCoin.classList.add("top-coin");
     topCoin.classList.add("top-coin");
     topCoin.innerHTML += `
             <div class="coin-rank">
@@ -52,17 +60,26 @@ export async function coinFiller() {
                 : `<div class="fav-linker">
                     <img class="unstar" data-coin="${data["symbol"]}" src="../assets/unstar.svg" alt="">
                 </div>`
-            }
-        `;
+            }`;
+    favCoin.innerHTML=topCoin.innerHTML;
     document.querySelector(".top-coins-cont").appendChild(topCoin);
+    if(user.getCoins().includes(data["symbol"])){
+      document.querySelector(".fav-coins-cont").appendChild(favCoin);
+    }
     topCoin
       .querySelector(".fav-linker img")
-      .addEventListener("click", favClicker);
+      .addEventListener("click", (e)=>{
+        favClicker(e,favCoin);
+      });
+    favCoin
+      .querySelector(".fav-linker img")
+      .addEventListener("click", (e)=>{
+        favlistClicker(e,topCoin,favCoin);
+      });
   });
-  document.querySelector(".top-coins-cont").classList.remove("none");
 }
 
-function favClicker(e) {
+function favClicker(e,topCoin) {
   if (!user.getloginStatus()) return;
 
   if (e.target.classList.contains("unstar")) {
@@ -70,10 +87,20 @@ function favClicker(e) {
     e.target.classList.add("star");
     e.target.src = "../assets/star.svg";
     user.pushCoin(e.target.dataset.coin);
+    topCoin.querySelector(".fav-linker img").src="../assets/star.svg";
+    document.querySelector(".fav-coins-cont").appendChild(topCoin);
   } else {
     e.target.classList.add("unstar");
     e.target.classList.remove("star");
     e.target.src = "../assets/unstar.svg";
     user.removeCoin(e.target.dataset.coin);
+    document.querySelector(".fav-coins-cont").removeChild(topCoin);
   }
+}
+
+function favlistClicker(e,topCoin,favCoin){
+  document.querySelector(".fav-coins-cont").removeChild(favCoin);
+  user.removeCoin(e.target.dataset.coin);
+  topCoin.querySelector(".fav-linker img").src="../assets/unstar.svg";
+  topCoin.querySelector(".fav-linker img").className="unstar";
 }
