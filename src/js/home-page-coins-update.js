@@ -33,6 +33,15 @@ export function tabSwitcher(){
                 tab_btn[2].classList.remove("focus-card");
                 document.querySelector(".top-coins-cont").classList.add("none");
                 document.querySelector(".news-cont").classList.remove("none");
+                document.querySelector(".fav-coins-cont").classList.add("none");
+            }
+            if(index===2){
+                tab_btn[index].classList.add("focus-card");
+                tab_btn[0].classList.remove("focus-card");
+                tab_btn[1].classList.remove("focus-card");
+                document.querySelector(".top-coins-cont").classList.add("none");
+                document.querySelector(".news-cont").classList.add("none");
+                document.querySelector(".fav-coins-cont").classList.remove("none");
             }
 
         });
