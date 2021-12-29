@@ -2,7 +2,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { readDB } from "./module/_database";
 import { auth, login, logout } from "./module/_login";
 import { user } from "./module/_user";
+import { newsFiller } from "./news";
 import { coinFiller } from "./top-coin-filler";
+
+
 
 document.querySelector(".user-icon").addEventListener("click", async () => {
   console.log(user.getloginStatus());
@@ -31,4 +34,5 @@ onAuthStateChanged(auth, async (firebaseuser) => {
     user.removeInitial();
     coinFiller();
   }
+  newsFiller();
 });
