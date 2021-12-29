@@ -1,7 +1,7 @@
 function apiFetch() {
   let TopapiData = null;
   let NewsData=null;
-  let i=0;
+  let i=1;
   const setTopData = (data) => (TopapiData = data);
   const getTopcoinData = async () => {
     if (TopapiData === null) {
@@ -16,9 +16,14 @@ function apiFetch() {
       let data = await NewsFetcher(i++);
       setNewsData(data);
     }
-    return TopapiData;
+    console.log(NewsData);
+    return NewsData;
   };
-  return { getTopcoinData,getNewsData};
+  const fetchNewsData=async ()=>{
+    let data = await NewsFetcher(i++);
+    setNewsData(data);
+  }
+  return { getTopcoinData,getNewsData,fetchNewsData };
 }
 
 async function TopCoinfetcher() {
