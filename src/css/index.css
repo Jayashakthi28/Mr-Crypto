@@ -273,6 +273,13 @@ body{
     text-decoration: underline;
     width: fit-content;
 }
+/************************************************************/
+.fav-coins-cont{
+    padding: 1rem;
+    box-shadow: 0 0 5px 1px var(--green-dull);
+    margin: 2rem 1rem;
+    border-radius: 0.5rem;
+}
 
 /***********************************************************/
 
