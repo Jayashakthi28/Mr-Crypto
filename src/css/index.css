@@ -148,6 +148,10 @@ body{
     cursor: pointer;
 }
 
+.coin-switch-tab .tab_btn:hover{
+    text-decoration: underline;
+}
+
 /**************************************/
 .top-coins-cont{
     padding: 1rem;
@@ -202,6 +206,76 @@ body{
     content: "$ ";
 }
 
+/***********************************************************/
+.news-cont{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 900px;
+    color: var(--white);
+    overflow: auto;
+}
+
+.news-cont::-webkit-scrollbar{
+    display: none;
+}
+
+.news-cont::-webkit-scrollbar-track{
+
+}
+
+
+
+.news-data{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 5px 1px var(--green-dull);
+    padding: 1rem;
+    height: auto;
+    margin: 1.1rem 0;
+}
+
+.news-title{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    text-overflow: ellipsis;
+    font-size: 1.5rem;
+    color: var(--green-bright);
+}
+
+.news-content{
+    margin-top: 1rem;
+}
+
+.news-content > article {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 0.5rem;
+}
+
+.news-cont a{
+    color: var(--green-dull);
+}
+
+.news-title a{
+    text-decoration: none;
+}
+
+.news-title a:hover{
+    text-decoration: underline;
+}
+
+.load-more{
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-decoration: underline;
+    width: fit-content;
+}
+
+/***********************************************************/
+
 .red-txt{
     color: var(--red);
 }
@@ -212,4 +286,12 @@ body{
 
 .none{
     display: none;
+}
+
+.focus-card{
+    border-bottom: solid 2px var(--white);
+}
+
+.focus-card:hover{
+    text-decoration: none !important;
 }
