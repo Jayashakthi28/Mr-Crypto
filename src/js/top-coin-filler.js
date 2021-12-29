@@ -4,15 +4,17 @@ import { user } from "./module/_user";
 
 export async function coinFiller() {
   let jsonData = await apiData.getTopcoinData();
+  document.querySelector(".news-cont").classList.add("none");
   document.querySelector(".top-coins-cont").innerHTML = "";
   jsonData = await jsonData["data"];
-  let template = "";
   await jsonData.forEach((data) => {
     let percent =
       +data["metrics"]["market_data"]["percent_change_usd_last_24_hours"];
     let price = +data["metrics"]["market_data"]["price_usd"];
     percent = percent.toFixed(2);
     price = price.toFixed(2);
+    let upperSlug =
+      data["slug"].charAt(0).toUpperCase() + data["slug"].slice(1);
     let topCoin = document.createElement("div");
     topCoin.classList.add("top-coin");
     topCoin.innerHTML += `
@@ -21,7 +23,7 @@ export async function coinFiller() {
             </div>
             <div class="coin-logo-cont">
                 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/${
-                  coins_map[data["symbol"]]
+                  coins_map[upperSlug] || coins_map[data["symbol"]]
                 }.png" alt="">
             </div>
             <div class="coin-name">
