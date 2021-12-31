@@ -13,6 +13,7 @@ export async function coinFiller() {
 }
 
 function coinsRenderer(jsonData){
+  document.querySelector(".fav-coins-cont").innerHTML="";
   jsonData.forEach((data) => {
     let percent =
       +data["metrics"]["market_data"]["percent_change_usd_last_24_hours"];
@@ -80,6 +81,7 @@ function coinsRenderer(jsonData){
 }
 
 function favClicker(e,topCoin) {
+  console.log("clicking");
   if (!user.getloginStatus()) return;
 
   if (e.target.classList.contains("unstar")) {
@@ -88,6 +90,7 @@ function favClicker(e,topCoin) {
     e.target.src = "../assets/star.svg";
     user.pushCoin(e.target.dataset.coin);
     topCoin.querySelector(".fav-linker img").src="../assets/star.svg";
+    console.log(document.querySelector(".fav-coins-cont"),topCoin);
     document.querySelector(".fav-coins-cont").appendChild(topCoin);
   } else {
     e.target.classList.add("unstar");
@@ -100,7 +103,7 @@ function favClicker(e,topCoin) {
 
 function favlistClicker(e,topCoin,favCoin){
   document.querySelector(".fav-coins-cont").removeChild(favCoin);
-  user.removeCoin(e.target.dataset.coin);
   topCoin.querySelector(".fav-linker img").src="../assets/unstar.svg";
   topCoin.querySelector(".fav-linker img").className="unstar";
+  user.removeCoin(e.target.dataset.coin);
 }
