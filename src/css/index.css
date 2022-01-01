@@ -111,6 +111,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;   
+    cursor: pointer;
 }
 
 .major_coin_card img{
@@ -206,6 +207,14 @@ body{
     content: "$ ";
 }
 
+.top-coin .coin-name{
+    cursor: pointer;
+}
+
+.top-coin .coin-name:hover{
+    text-decoration: underline;
+}
+
 /***********************************************************/
 .news-cont{
     padding: 1rem;
@@ -279,6 +288,11 @@ body{
     box-shadow: 0 0 5px 1px var(--green-dull);
     margin: 2rem 1rem;
     border-radius: 0.5rem;
+}
+
+.alert-msg{
+    color: var(--white);
+    font-size: 2.5rem;
 }
 
 /***********************************************************/
