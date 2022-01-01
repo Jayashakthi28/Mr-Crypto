@@ -32,6 +32,10 @@ onAuthStateChanged(auth, async (firebaseuser) => {
     await coinFiller();
   } else {
     user.removeInitial();
+    document.querySelector(".fav-coins-cont").innerHTML=`
+    <div class="alert-msg">
+    Please Sigin to Use this Feature
+    </div>`;
     coinFiller();
   }
   newsFiller();

@@ -1,19 +1,43 @@
 import { coins_map } from "./coins_map";
 import { apiData } from "./module/_apiFetch";
 import { user } from "./module/_user";
+import { Redirector } from "./module/_redirect";
+
+function FocusReturner(){
+  const tab_btn= document.querySelectorAll(".tab_btn");
+  tab_btn.forEach((d,i)=>{
+    if(d.classList.contains('focus-card')){
+      if(i===0){
+        document.querySelector(".news-cont").classList.add("none");
+        document.querySelector('.fav-coins-cont').classList.add("none");
+        document.querySelector(".top-coins-cont").classList.remove("none");
+      }
+      if(i===1){
+        document.querySelector(".news-cont").classList.remove("none");
+        document.querySelector('.fav-coins-cont').classList.add("none");
+        document.querySelector(".top-coins-cont").classList.add("none");
+      }
+      if(i===2){
+        document.querySelector(".news-cont").classList.add("none");
+        document.querySelector('.fav-coins-cont').classList.remove("none");
+        document.querySelector(".top-coins-cont").classList.add("none");
+      }
+    }
+  })
+}
 
 export async function coinFiller() {
   let jsonData = await apiData.getTopcoinData();
-  document.querySelector(".news-cont").classList.add("none");
-  document.querySelector('.fav-coins-cont').classList.add("none");
   document.querySelector(".top-coins-cont").innerHTML = "";
+  FocusReturner();
   jsonData = await jsonData["data"];
   coinsRenderer(jsonData);
-  document.querySelector(".top-coins-cont").classList.remove("none");
 }
 
 function coinsRenderer(jsonData){
-  document.querySelector(".fav-coins-cont").innerHTML="";
+  if(user.getloginStatus()){
+    document.querySelector(".fav-coins-cont").innerHTML="";
+  }
   jsonData.forEach((data) => {
     let percent =
       +data["metrics"]["market_data"]["percent_change_usd_last_24_hours"];
@@ -35,7 +59,7 @@ function coinsRenderer(jsonData){
                   coins_map[upperSlug] || coins_map[data["symbol"]]
                 }.png" alt="">
             </div>
-            <div class="coin-name">
+            <div class="coin-name" data-coin="${data['symbol']}">
                 ${data["slug"].charAt(0).toUpperCase() + data["slug"].slice(1)}
             </div>
             ${
@@ -77,6 +101,12 @@ function coinsRenderer(jsonData){
       .addEventListener("click", (e)=>{
         favlistClicker(e,topCoin,favCoin);
       });
+    topCoin.querySelector(".coin-name").addEventListener("click",(e)=>{
+      Redirector(e.target.dataset.coin);
+    });
+    favCoin.querySelector(".coin-name").addEventListener("click",(e)=>{
+      Redirector(e.target.dataset.coin);
+    })
   });
 }
 
@@ -107,3 +137,9 @@ function favlistClicker(e,topCoin,favCoin){
   topCoin.querySelector(".fav-linker img").className="unstar";
   user.removeCoin(e.target.dataset.coin);
 }
+
+document.querySelector(".search-bar input").addEventListener("keypress",(e)=>{
+  if(e.key==="Enter"){
+    Redirector(e.target.value);
+  }
+})
