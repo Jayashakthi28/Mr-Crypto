@@ -1,3 +1,152 @@
+@font-face {
+    font-family: 'Arvo';
+    src: url(../assets/Arvo-BoldItalic.ttf);
+}
+
+*,*::before,*::after{
+    font-family: 'Arvo';
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    -webkit-user-drag: none;
+}
+
+:root{
+    --grey:#6B6E70;
+    --black:#222629;
+    --green-bright:#86C232;
+    --red:#fe3f38;
+    --green-dull:#99D34F;
+    --white:#ffffff;
+}
+
+
+
+nav{
+    background-color: var(--grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    position: sticky;
+}
+
+.ham-button{
+    height: 60px;
+}
+
+.user-icon{
+    height: 40px;
+}
+
 body{
-    background-color: yellow;
+    background-color: var(--black);
+}
+
+.main-card{
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.main-card img{
+    width: 130px;
+}
+
+.coin-det{
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 3rem;
+}
+
+.coin-det .coin-name{
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.coin-name h2{
+    font-size: 3rem;
+    color: var(--green-bright);
+    margin-right: 1rem;
+}
+
+.coin-name .coin-price{
+    color: var(--white);
+    font-size: 2rem;
+    white-space: nowrap;
+}
+
+.coin-price::before{
+    content: "$ ";
+}
+
+.coin-det .coin-tag{
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+@media screen and (max-width:755px){
+    .coin-name h2{
+        font-size: 2rem;
+    }
+    .coin-det .coin-tag{
+        font-size: 1rem;
+    }
+    .coin-name .coin-price{
+        font-size: 1.5rem;
+    }
+}
+
+.wrapper{
+    padding: 1rem 2rem;
+    color: var(--white);
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.wrapper .heading{
+    font-size: 2rem;
+    color: var(--green-bright);
+}
+
+.wrapper .heading::after{
+    content: ' :';
+}
+
+.wrapper .p-cont{
+    margin-left: 2rem;
+}
+
+.wrapper ul{
+    margin-left: 2.5rem;
+}
+
+.wrapper li{
+    margin: 0.2rem 0;
+}
+
+.wrapper li>div{
+    display: flex;
+}
+
+.wrapper li .li-head{
+    color: var(--green-dull);
+    margin-right: 0.2rem;
+}
+
+.wrapper li .li-head::after{
+    content: ": ";
+}
+
+.wrapper li a{
+    color: var(--green-dull);
+    text-decoration: underline;
 }
