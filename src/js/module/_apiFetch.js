@@ -23,7 +23,11 @@ function apiFetch() {
     let data = await NewsFetcher(i++);
     setNewsData(data);
   }
-  return { getTopcoinData,getNewsData,fetchNewsData };
+  const fetCoinProfile=async(coin)=>{
+    let data=await CoinProfileFetcher(coin);
+    return data;
+  }
+  return { getTopcoinData,getNewsData,fetchNewsData,fetCoinProfile };
 }
 
 async function TopCoinfetcher() {
@@ -38,6 +42,13 @@ async function NewsFetcher(i){
     let data = await fetch(url);
     data = await data.json();
     return data;
+}
+
+async function CoinProfileFetcher(coin){
+  let url=`https://data.messari.io/api/v1/assets/${coin}/profile`
+  let data=await fetch(url);
+  data=await data.json();
+  return data;
 }
 
 export const apiData = apiFetch();
