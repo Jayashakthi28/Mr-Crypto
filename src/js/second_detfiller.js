@@ -140,5 +140,14 @@ async function coinFiller(){
     document.querySelector("body").appendChild(token_det);
     document.querySelector("body").appendChild(organisations);
     document.querySelector("body").appendChild(resources);
+    document.querySelector("body").innerHTML+=`    <footer>
+    <h2>Thanks To:</h2>
+    <div>
+      <a href="https://messari.io/"><img src="../assets/messari.png" alt=""></a>
+      <a href="https://coinmarketcap.com/"><img src="../assets/coinmarketcap.png" alt=""></a>
+    </div>
+  </footer>`;
+  document.querySelector("nav").classList.remove("none");
+  document.querySelector(".preloader").classList.add("none");
 }
 coinFiller();

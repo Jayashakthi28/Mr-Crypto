@@ -32,6 +32,8 @@ export async function coinFiller() {
   FocusReturner();
   jsonData = await jsonData["data"];
   coinsRenderer(jsonData);
+  document.querySelector("nav").classList.remove("none");
+  document.querySelector(".preloader").classList.add("none");
 }
 
 function coinsRenderer(jsonData){
@@ -59,7 +61,7 @@ function coinsRenderer(jsonData){
                   coins_map[upperSlug] || coins_map[data["symbol"]]
                 }.png" alt="">
             </div>
-            <div class="coin-name" data-coin="${data['symbol']}">
+            <div class="coin-name" data-coin="${data['symbol']||data["slug"]}">
                 ${data["slug"].charAt(0).toUpperCase() + data["slug"].slice(1)}
             </div>
             ${
